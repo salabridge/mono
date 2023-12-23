@@ -1,0 +1,8 @@
+{
+  "lnf.aliases": {
+    "$/": "${workspaceRoot}/",
+    "$lib/":"${workspaceRoot}/src/lib/",
+    "$src/": "${workspaceRoot}/src/",
+    "$components/": "${workspaceRoot}/src/lib/components"
+  }
+}
