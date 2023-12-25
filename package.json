@@ -12,16 +12,21 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest",
+		"db:push": "drizzle-kit push:pg",
+		"db:migrate": "drizzle-kit generate:pg",
+		"db:up": "drizzle-kit up:pg"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@types/pg": "^8.10.9",
 		"@typescript-eslint/eslint-plugin": "^6.0.0",
 		"@typescript-eslint/parser": "^6.0.0",
 		"autoprefixer": "^10.4.16",
+		"drizzle-kit": "^0.20.7",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.30.0",
@@ -38,7 +43,13 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@lucia-auth/adapter-postgresql": "^2.0.2",
 		"@sveltejs/adapter-vercel": "^4.0.3",
-		"class-variance-authority": "^0.7.0"
+		"arktype": "1.0.28-alpha",
+		"class-variance-authority": "^0.7.0",
+		"dotenv": "^16.3.1",
+		"drizzle-orm": "^0.29.1",
+		"lucia": "^2.7.6",
+		"pg": "^8.11.3"
 	}
 }
