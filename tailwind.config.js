@@ -25,6 +25,7 @@ export default {
       addUtilities,
       theme
     }) => {
+      // Heading utilities.
       addUtilities({
         '.h1': {
           'font-size': theme('fontSize.3xl'),
@@ -56,7 +57,7 @@ export default {
           'font-size': theme('fontSize.md'),
           'font-weight': theme('fontWeight.semibold'),
         }
-      })
+      });
     })
   ],
 }

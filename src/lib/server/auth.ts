@@ -16,6 +16,8 @@ export const auth = lucia({
     return {
       username: data.username,
       metadata: data.raw_user_metadata,
-    }
+    };
   }
 });
+
+export type Auth = typeof auth;

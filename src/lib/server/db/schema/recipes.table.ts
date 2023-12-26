@@ -1,5 +1,4 @@
 import { pgTable, uuid, varchar, uniqueIndex, text } from 'drizzle-orm/pg-core';
-import { users } from './users.table';
 
 export const recipes = pgTable(
 	'recipes',
@@ -8,7 +7,7 @@ export const recipes = pgTable(
 		title: varchar('title').notNull(),
 		shortTitle: varchar('short_title').notNull(),
 		recipeOwner: varchar('recipeOwner', { length: 15 }),
-		body: text('text').notNull().default('')
+		body: text('text').notNull().default(''),
 	},
 	({ shortTitle }) => ({
 		shortNameIdx: uniqueIndex().on(shortTitle)
