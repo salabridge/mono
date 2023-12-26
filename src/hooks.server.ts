@@ -1,7 +1,12 @@
+import { auth } from '$lib/server/auth';
+import type { Handle } from '@sveltejs/kit';
 
-export const handle = async ({
+export const handle: Handle = async ({
   event,
-  resolve
+  resolve,
 }) => {
-  return resolve(event);
+
+  event.locals.auth = auth.handleRequest(event);
+
+  return await resolve(event);
 }

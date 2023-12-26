@@ -8,7 +8,6 @@
 {/snippet}
 
 <div class="container mx-auto">
-
   <Header tag="h1" actions={headerActions}>
     Testing
   </Header>
