@@ -23,9 +23,13 @@ export default {
   plugins: [
     plugin(({
       addUtilities,
-      addComponents,
       theme
     }) => {
+      addUtilities({
+        '.maxed-container': {
+
+        }
+      })
       // Heading utilities.
       addUtilities({
         '.h1': {

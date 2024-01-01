@@ -6,3 +6,5 @@ export * from './keys.table';
 
 // Non-auth stuff
 export * from './recipes.table';
+export * from './ingredients.table';
+export * from './recipeIngredients.table';
