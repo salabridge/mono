@@ -3,6 +3,7 @@
     "$/": "${workspaceRoot}/",
     "$lib/":"${workspaceRoot}/src/lib/",
     "$src/": "${workspaceRoot}/src/",
-    "$components/": "${workspaceRoot}/src/lib/components"
+    "$components/": "${workspaceRoot}/src/lib/components",
+    "$routes/": "${workspaceRoot}/src/routes"
   }
 }

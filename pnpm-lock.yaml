@@ -8,6 +8,9 @@ dependencies:
   '@lucia-auth/adapter-postgresql':
     specifier: ^2.0.2
     version: 2.0.2(lucia@2.7.6)(pg@8.11.3)
+  '@lucia-auth/oauth':
+    specifier: ^3.5.0
+    version: 3.5.0(lucia@2.7.6)
   '@sveltejs/adapter-vercel':
     specifier: ^4.0.3
     version: 4.0.3(@sveltejs/kit@2.0.5)
@@ -908,6 +911,14 @@ packages:
     dependencies:
       lucia: 2.7.6
       pg: 8.11.3
+    dev: false
+
+  /@lucia-auth/oauth@3.5.0(lucia@2.7.6):
+    resolution: {integrity: sha512-JSwAMVwlDJtbvfcJV1nbkv41OD830pgICrx8zFT71SYd5I1MnEQ+GqMTXBGRyxzc5XlLatT8ZS1Jt0k81487xg==}
+    peerDependencies:
+      lucia: ^2.0.0
+    dependencies:
+      lucia: 2.7.6
     dev: false
 
   /@mapbox/node-pre-gyp@1.0.11:

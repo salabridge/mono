@@ -10,7 +10,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint .",
-    "format:check": "prettier --check .",
+		"format:check": "prettier --check .",
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
@@ -45,6 +45,7 @@
 	"type": "module",
 	"dependencies": {
 		"@lucia-auth/adapter-postgresql": "^2.0.2",
+		"@lucia-auth/oauth": "^3.5.0",
 		"@sveltejs/adapter-vercel": "^4.0.3",
 		"arktype": "1.0.28-alpha",
 		"class-variance-authority": "^0.7.0",
