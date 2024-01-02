@@ -15,7 +15,6 @@ export const GET = async ({ cookies, url, locals, fetch }) => {
     });
   }
 
-
   try {
     const { getExistingUser, googleUser, createUser } =
       await googleAuth.validateCallback(code);

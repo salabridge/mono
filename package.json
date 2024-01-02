@@ -47,6 +47,8 @@
 		"@lucia-auth/adapter-postgresql": "^2.0.2",
 		"@lucia-auth/oauth": "^3.5.0",
 		"@sveltejs/adapter-vercel": "^4.0.3",
+		"@tiptap/core": "^2.1.13",
+		"@tiptap/starter-kit": "^2.1.13",
 		"arktype": "1.0.28-alpha",
 		"class-variance-authority": "^0.7.0",
 		"dotenv": "^16.3.1",
