@@ -1,4 +1,8 @@
 <script lang="ts">
-  export let data;
+	import TipTap from '$lib/components/tiptap/tiptap.svelte';
+	export let data;
 </script>
-Hello, you should be logged in here.
+
+<div class="container mx-auto">
+	<TipTap />
+</div>
