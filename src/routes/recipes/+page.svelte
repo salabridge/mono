@@ -57,24 +57,22 @@
           {#snippet off()}
             <CameraOffIcon size="1em" />
           {/snippet}
-          <Toggle selected='on' on={on} {off} onchange={(e) => console.info(e)}/>
+          <Toggle selected='on' {on} {off} onchange={(e) => console.info(e)}/>
         {/snippet}
         <Header tag="h3" color="custom" actions={cookingActions}>
           Cooking
         </Header>
       </header>
-      <ol class="grid grid-cols-3">
-        <li class="bg-blue-400 grid col-span-3 grid-cols-subgrid gap-2">
+      <ol class="grid grid-cols-[1fr_8fr_minmax(0,250px)]">
+        <li class="grid col-span-3 grid-cols-subgrid gap-2">
           <div>Lorem, ipsum.</div>
           <div>Distinctio, ad.</div>
           <div><img src="https://placehold.it/400x310" class="w-full h-auto" alt="placeholder"/></div>
         </li>
-        <li class="grid col-span-3 bg-blue-400 grid-cols-subgrid">
+        <li class="grid col-span-3 grid-cols-subgrid">
           <div>Lorem, ipsum.</div>
           <div>Distinctio, ad.</div>
-          <div>
-            <img src="https://placehold.it/500x400" class="w-full h-auto" alt="">
-          </div>
+          <div><img src="https://placehold.it/400x310" class="w-full h-auto" alt="placeholder"/></div>
         </li>
       </ol>
     </section>
