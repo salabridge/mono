@@ -64,6 +64,7 @@ export default {
         }
       });
       
+      // Button utilities
       addUtilities({
         '.btn': {
           padding: `${theme('spacing.1')} ${theme('spacing.2')}`,
@@ -96,6 +97,16 @@ export default {
             padding: theme('spacing.3'),
             'font-size': theme('fontSize.2xl')
           }
+        }
+      });
+
+      // Variants
+      addUtilities({
+        '.variant-filled': {
+          'background-color': theme('colors.zinc.600'),
+        },
+        '.variant-filled-primary': {
+          'background-color': theme('colors.primary.500'),
         }
       });
     })
