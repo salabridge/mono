@@ -4,7 +4,7 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import * as schema from '$lib/server/db/schema';
 
 export const pool = new Pg.Pool({
-	connectionString: DB_URL
+	connectionString: `${DB_URL}require`
 });
 
 await pool.connect();
