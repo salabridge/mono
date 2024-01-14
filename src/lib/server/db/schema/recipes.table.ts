@@ -1,4 +1,6 @@
-import { pgTable, uuid, varchar, uniqueIndex, text } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
+import { pgTable, text, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
+import { users } from '.';
 
 export const recipes = pgTable(
 	'recipes',
@@ -13,3 +15,18 @@ export const recipes = pgTable(
 		shortNameIdx: uniqueIndex().on(shortTitle)
 	})
 );
+
+export const userRecipes = relations(users, ({ many }) => {
+  return {
+    recipes: many(recipes),
+  };
+});
+
+export const recipeOwner = relations(recipes, ({ one }) => {
+  return {
+    owner: one(users, {
+      fields: [recipes.recipeOwner],
+      references: [users.id]
+    })
+  };
+});

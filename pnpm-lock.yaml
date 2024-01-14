@@ -26,6 +26,9 @@ dependencies:
   lucia:
     specifier: ^2.7.6
     version: 2.7.6
+  lucide-svelte:
+    specifier: ^0.302.0
+    version: 0.302.0(svelte@5.0.0-next.26)
   pg:
     specifier: ^8.11.3
     version: 8.11.3
@@ -2404,6 +2407,14 @@ packages:
 
   /lucia@2.7.6:
     resolution: {integrity: sha512-xyRkNtevf0DUM4nGC6F2nCFFNphZ1qqBrfWwAgPa9zkpQsVJ/hN32I8zAY+pm+ZKWPPS/C/Sqqmo2LreSCzg7w==}
+    dev: false
+
+  /lucide-svelte@0.302.0(svelte@5.0.0-next.26):
+    resolution: {integrity: sha512-sDC/dmrmFT8jRKVbxsA51QaIdUhj17Q7E8Et+3pNjseLnVvysNQhGb+TFwKtAai2kfGVpt3/lHYPatQi1ILmlg==}
+    peerDependencies:
+      svelte: '>=3 <5'
+    dependencies:
+      svelte: 5.0.0-next.26
     dev: false
 
   /magic-string@0.30.5:

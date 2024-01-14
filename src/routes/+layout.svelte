@@ -15,3 +15,7 @@
 {#if children}
   {@render children()}
 {/if}
+
+<footer class="flex justify-center items-center p-2">
+  &copy; 2023 "Salabridges"
+</footer>
