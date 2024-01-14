@@ -25,6 +25,11 @@ export default {
       addUtilities,
       theme
     }) => {
+      addUtilities({
+        '.maxed-container': {
+
+        }
+      })
       // Heading utilities.
       addUtilities({
         '.h1': {
@@ -56,6 +61,52 @@ export default {
           'font-family': theme('fontFamily.headers'),
           'font-size': theme('fontSize.md'),
           'font-weight': theme('fontWeight.semibold'),
+        }
+      });
+      
+      // Button utilities
+      addUtilities({
+        '.btn': {
+          padding: `${theme('spacing.1')} ${theme('spacing.2')}`,
+          'border-radius': theme('borderRadius.DEFAULT'),
+          '&.btn-sm': {
+            padding: theme(`spacing.1`),
+            'font-size': theme('fontSize.sm')
+          },
+          '&.btn-lg': {
+            padding: `${theme('spacing.1')} ${theme('spacing.3')}`,
+            'font-size': theme('fontSize.lg'),
+          },
+          '&.btn-xl': {
+            padding: `${theme('spacing[2.5]')} ${theme('spacing.3')}`,
+            'font-size': theme('fontSize.xl'),
+          }
+        },
+        '.btn-icon': {
+          padding: theme('spacing.2'),
+          'border-radius': theme('borderRadius.full'),
+          '&.btn-sm': {
+            padding: theme('spacing.1'),
+            'font-size': theme('fontSize.sm'),
+          },
+          '&.btn-lg': {
+            padding: theme('spacing[2.5]'),
+            'font-size': theme('fontSize.lg')
+          },
+          '&.btn-xl': {
+            padding: theme('spacing.3'),
+            'font-size': theme('fontSize.2xl')
+          }
+        }
+      });
+
+      // Variants
+      addUtilities({
+        '.variant-filled': {
+          'background-color': theme('colors.zinc.600'),
+        },
+        '.variant-filled-primary': {
+          'background-color': theme('colors.primary.500'),
         }
       });
     })
