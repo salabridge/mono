@@ -2,10 +2,13 @@
   import { onMount, onDestroy } from 'svelte'
   import { Editor } from '@tiptap/core'
   import StarterKit from '@tiptap/starter-kit'
-  import { Steps } from './extension'
+  import { StepsNode, Steps } from './extension'
 
   let element: HTMLDivElement;
   let editor: Editor;
+  let html: string;
+
+  $: console.info(html);
 
   // On mount, get everything setup
   onMount(() => {
@@ -13,12 +16,14 @@
       element: element,
       extensions: [
         StarterKit,
-        Steps
+        Steps,
+        // Fuc
       ],
-      content: '<h1>Boobs</h1>\n<p>Hello World! 🌍️ </p>',
+      content: '<h1>Boobs</h1>\n<p>Hello World! 🌍️ </p><steps-node-sv>Hi Jim</steps-node-sv>',
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
         editor = editor
+        html = editor.getHTML();
       },
     })
   });
@@ -32,7 +37,9 @@
 </script>
 
 {#if editor}
-  <button>
+  <button on:click={() => editor.chain().focus().toggleStepNode().run()}
+    class:active={editor.isActive('steps-node')}>
+    Steps
   </button>
   <button
     on:click={() => editor.chain().focus().toggleHeading({ level: 1}).run()}
@@ -49,9 +56,19 @@
   <button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive('paragraph')}>
     P
   </button>
+  <button on:click={() => {
+    console.info(editor.getHTML(), editor.getText());
+  }}>
+    Save
+  </button>
 {/if}
 
 <div bind:this={element} />
+
+<div>
+  this is raw HTML
+  {@html html}
+</div>
 
 <style>
   button.active {
