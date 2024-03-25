@@ -10,8 +10,8 @@
 		use:enhance={() => {
 			return async ({ result, action, update }) => {
 				console.info(result, action, update);
-        await invalidateAll();
-        goto('/login')
+				await invalidateAll();
+				goto('/login');
 			};
 		}}
 	>

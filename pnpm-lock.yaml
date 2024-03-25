@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@jhecht/arktype-utils':
+    specifier: ^0.1.0
+    version: 0.1.0(arktype@1.0.28-alpha)
   '@lucia-auth/adapter-postgresql':
     specifier: ^2.0.2
     version: 2.0.2(lucia@2.7.6)(pg@8.11.3)
@@ -585,6 +588,15 @@ packages:
     dependencies:
       '@sinclair/typebox': 0.27.8
     dev: true
+
+  /@jhecht/arktype-utils@0.1.0(arktype@1.0.28-alpha):
+    resolution: {integrity: sha512-Jiv3AoTrOdQTZFBoVIOFyacUyasNGWOpsyE8e4vHjgfnDAMyJzI9P4DIHUsfNe4LQBe/xET0n9wX+T2JQbM4gg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      arktype: ^1.0.28-alpha
+    dependencies:
+      arktype: 1.0.28-alpha
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}

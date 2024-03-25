@@ -6,8 +6,8 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-      auth: AuthRequest;
-    }
+			auth: AuthRequest;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
@@ -16,15 +16,15 @@ declare global {
 
 /// <reference types="lucia" />
 declare global {
-  namespace Lucia {
-    type Auth = import('$lib/server/auth').Auth;
-    type DatabaseUserAttributes = {
-      username: string;
-      raw_user_metadata: Record<string, unknown>;
-    };
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    type DatabaseSessionAttributes = {};
-  }
+	namespace Lucia {
+		type Auth = import('$lib/server/auth').Auth;
+		type DatabaseUserAttributes = {
+			username: string;
+			raw_user_metadata: Record<string, unknown>;
+		};
+		// eslint-disable-next-line @typescript-eslint/ban-types
+		type DatabaseSessionAttributes = {};
+	}
 }
 
 export {};
