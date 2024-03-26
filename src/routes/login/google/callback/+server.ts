@@ -1,48 +1,11 @@
-// import { auth, google } from '$lib/server/auth';
-// import { OAuth2RequestError, generateCodeVerifier } from 'arctic';
-// import { generateId } from 'lucia';
-// import { db } from '$lib/server/db/client';
-
-// import type { RequestEvent } from '@sveltejs/kit';
-
-// export async function GET(event) {
-//   const code = event.url.searchParams.get('code');
-//   const state = event.url.searchParams.get('state');
-//   const storedState = event.cookies.get('google_oauth_state') ?? null;
-
-//   const codeVerifier = generateCodeVerifier();
-
-//   if(!code || !state || !storedState || state !== storedState) {
-//     console.info('fucky wucky');
-//     return new Response(null, {
-//       status: 400,
-//     });
-//   }
-
-//   try {
-//     const tokens = await google.validateAuthorizationCode(code, codeVerifier);
-
-//     console.info(tokens);
-//     return new Response(null);
-//     // const googleResponse = await
-//   } catch(e) {
-//     if(e instanceof OAuth2RequestError) {
-//       console.info(e.message);
-//     }
-//     return new Response(null, {
-//       status: 400,
-//     })
-//   }
-// }
-
-import { google, auth } from '$lib/server/auth';
-import { OAuth2RequestError, generateCodeVerifier } from 'arctic';
-import { generateId } from 'lucia';
+import { auth, google } from '$lib/server/auth';
 import { db } from '$lib/server/db/client';
+import { OAuth2RequestError } from 'arctic';
 import { decodeJwt } from 'jose';
+import { generateId } from 'lucia';
 
-import type { RequestEvent } from '@sveltejs/kit';
 import { users } from '$lib/server/db/schema';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent): Promise<Response> {
 	const code = event.url.searchParams.get('code');

@@ -3,7 +3,7 @@ import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
 import { Lucia } from 'lucia';
 import { db } from './db/client';
 import { Google, Yahoo } from 'arctic';
-import { GAUTH_CLIENT_ID, GAUTH_SECRET, YAHOO_CLIENT_ID, YAHOO_SECRET } from '$env/static/private';
+import { GAUTH_CLIENT_ID, GAUTH_SECRET } from '$env/static/private';
 import { sessions, users } from './db/schema';
 
 const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
@@ -29,11 +29,4 @@ export const google = new Google(
 	GAUTH_CLIENT_ID,
 	GAUTH_SECRET,
 	'http://localhost:5173/login/google/callback'
-);
-
-// Fuck you
-export const yahoo = new Yahoo(
-	YAHOO_CLIENT_ID,
-	YAHOO_SECRET,
-	'http://localhost:5173/login/yahoo/callback'
 );
