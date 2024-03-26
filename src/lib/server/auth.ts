@@ -22,15 +22,6 @@ export const auth = new Lucia(adapter, {
 	}
 });
 
-export const googleAuth = google(
-  auth, {
-    clientId: GAUTH_CLIENT_ID,
-    clientSecret: GAUTH_SECRET,
-    redirectUri: 'http://localhost:5173/auth/callback/google',
-    scope: ['email']
-  }
-);
-
 export type Auth = typeof auth;
 
 // Need to generify it
