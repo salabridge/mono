@@ -4,8 +4,8 @@ import { redirect } from '@sveltejs/kit';
 import { asc } from 'drizzle-orm';
 
 export const load = async ({ locals }) => {
-  const session = await locals.auth.validate();
-  if(!session) redirect(302, '/login');
+	const session = await locals.auth.validate();
+	if (!session) redirect(302, '/login');
 
   return {
     session,

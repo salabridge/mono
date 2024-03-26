@@ -44,6 +44,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@jhecht/arktype-utils": "^0.1.0",
 		"@lucia-auth/adapter-postgresql": "^2.0.2",
 		"@lucia-auth/oauth": "^3.5.0",
 		"@sveltejs/adapter-vercel": "^4.0.3",

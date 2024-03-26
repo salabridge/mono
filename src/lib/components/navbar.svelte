@@ -12,9 +12,7 @@
 					<button type="submit" formmethod="get" formaction="/logout"> Logout </button>
 					{$page.data.session.user.username}
 				{:else}
-					<button class="bg-primary-500 btn" formmethod="get" formaction="/login">
-						Login
-					</button>
+					<button class="bg-primary-500 btn" formmethod="get" formaction="/login"> Login </button>
 				{/if}
 			</form>
 		</div>

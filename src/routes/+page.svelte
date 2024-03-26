@@ -1,6 +1,6 @@
 <script>
 	import Header from '$lib/components/header/header.svelte';
-  import Input from '$lib/components/input/input.svelte';
+	import Input from '$lib/components/input/input.svelte';
 </script>
 
 <div class="container mx-auto">
@@ -9,5 +9,5 @@
 </div>
 
 <div class="container mx-auto">
-  <Input placeholder="something" class="px-3 rounded-full py-2 leading-3"/>
+	<Input placeholder="something" class="px-3 rounded-full py-2 leading-3" />
 </div>

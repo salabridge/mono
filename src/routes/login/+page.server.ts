@@ -1,5 +1,5 @@
 import { auth } from '$lib/server/auth.js';
-import { validateFormData } from '$lib/util/validation.js';
+import { validateFormData } from '@jhecht/arktype-utils';
 import { error } from '@sveltejs/kit';
 import { type } from 'arktype';
 import { LuciaError } from 'lucia';
@@ -26,7 +26,7 @@ export const actions = {
 				attributes: {}
 			});
 
-      locals.auth.setSession(session);
+			locals.auth.setSession(session);
 
 			// Return the session to the user.
 			return {

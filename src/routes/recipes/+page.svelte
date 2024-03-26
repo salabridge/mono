@@ -16,13 +16,7 @@
 		</ol>
 	</section>
 	<section class="w-4/6 rounded-lg md:-mt-28 bg-zinc-100 p-4 border border-zinc-700">
-		<Header>
-			{#snippet actions()}
-				<button title="bookmark">
-					<BookmarkIcon size="1em" />
-				</button>
-			{/snippet}
-
+		<Header {actions}>
 			Chicken Bacon Ranch
 			<small> (1hr 15min) </small>
 		</Header>
@@ -43,22 +37,18 @@
 				<li>Cook 8 oz. of bacon and cut into squares or flakes.</li>
 			</ol>
 		</section>
-
 		<section class="steps mt-4">
 			<header class="step">
-				<Header tag="h3" color="custom">
-					{#snippet actions()}
-						<Toggle selected="on" onchange={(e) => console.info(e)}>
-							{#snippet on()}
-								<CameraIcon size="1em" />
-							{/snippet}
-							{#snippet off()}
-								<CameraOffIcon size="1em" />
-							{/snippet}
-						</Toggle>
+				{#snippet cookingActions()}
+					{#snippet on()}
+						<CameraIcon size="1em" />
 					{/snippet}
-					Cooking
-				</Header>
+					{#snippet off()}
+						<CameraOffIcon size="1em" />
+					{/snippet}
+					<Toggle selected="on" {on} {off} onchange={(e) => console.info(e)} />
+				{/snippet}
+				<Header tag="h3" color="custom" actions={cookingActions}>Cooking</Header>
 			</header>
 			<ol class="grid grid-cols-[1fr_8fr_minmax(0,250px)]">
 				<li class="grid col-span-3 grid-cols-subgrid gap-2">
