@@ -3,3 +3,5 @@
 </script>
 
 Hello, you should be logged in here.
+
+{JSON.stringify(data)}
