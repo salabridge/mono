@@ -19,7 +19,13 @@
         Steps,
         // Fuc
       ],
-      content: '<h1>Boobs</h1>\n<p>Hello World! 🌍️ </p><steps-node-sv>Hi Jim</steps-node-sv>',
+      content: `<h1>Boobs</h1>\n<p>Hello World! 🌍️ </p>
+                <steps>
+                  <steps-node-sv>Hi Jim</steps-node-sv>
+                  <steps-node-sv>Penis</steps-node-sv>
+                  <steps-node-sv>Boobies</steps-node-sv>
+                </steps>
+                `,
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
         editor = editor

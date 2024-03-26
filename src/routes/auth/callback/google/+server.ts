@@ -4,7 +4,7 @@ import { VALID_EMAILS } from '$env/static/private';
 
 const validEmails = new Set(VALID_EMAILS.split(','));
 
-export const GET = async ({ cookies, url, locals, fetch }) => {
+export const GET = async ({ cookies, url, locals }) => {
   const storedState = cookies.get('google_oauth_state');
   const state = url.searchParams.get('state');
   const code = url.searchParams.get('code');
@@ -39,6 +39,7 @@ export const GET = async ({ cookies, url, locals, fetch }) => {
     };
 
     const user = await getUser();
+    console.info(user);
     const session = await auth.createSession({
       userId: user.userId,
       attributes: {}
@@ -53,7 +54,7 @@ export const GET = async ({ cookies, url, locals, fetch }) => {
   } catch (e) {
     if (e instanceof OAuthRequestError) {
       // invalid code
-      return new Response(null, {
+      return new Response('peenr', {
         status: 400
       });
     }
