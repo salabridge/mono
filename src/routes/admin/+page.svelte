@@ -1,4 +1,5 @@
 <script lang="ts">
-  export let data;
+	export let data;
 </script>
+
 Hello, you should be logged in here.

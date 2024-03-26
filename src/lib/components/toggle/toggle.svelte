@@ -17,10 +17,11 @@
 </script>
 
 <div
-  tabindex="0"
+	tabindex="0"
 	role="checkbox"
 	aria-checked={selected ? 'true' : 'false'}
-  onkeypress={(e) => e.key === 'Enter' && e.target === e.currentTarget && change(selected === 'on' ? 'off' : 'on')}
+	onkeypress={(e) =>
+		e.key === 'Enter' && e.target === e.currentTarget && change(selected === 'on' ? 'off' : 'on')}
 	class="toggle p-1 rounded-lg border bg-slate-200 flex gap-2"
 	onclick={() => change(selected === 'on' ? 'off' : 'on')}
 >
