@@ -1,23 +1,23 @@
 import { dev } from '$app/environment';
-import { pg } from '@lucia-auth/adapter-postgresql';
-import { lucia } from 'lucia';
-import { google } from '@lucia-auth/oauth/providers';
-import { sveltekit } from 'lucia/middleware';
-import { pool } from './db/client';
+import { DrizzlePostgreSQLAdapter } from '@lucia-auth/adapter-drizzle';
+import { Lucia } from 'lucia';
+import { db } from './db/client';
+import { Google, Yahoo } from 'arctic';
 import { GAUTH_CLIENT_ID, GAUTH_SECRET } from '$env/static/private';
+import { sessions, users } from './db/schema';
 
-export const auth = lucia({
-	env: dev ? 'DEV' : 'PROD',
-	middleware: sveltekit(),
-	adapter: pg(pool, {
-		user: `"auth"."users"`,
-		key: `"auth"."key"`,
-		session: `"auth"."sessions"`
-	}),
-	getUserAttributes: (data) => {
+const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
+
+export const auth = new Lucia(adapter, {
+	sessionCookie: {
+		attributes: {
+			secure: !dev
+		}
+	},
+	getUserAttributes(attributes) {
 		return {
-			username: data.username,
-			metadata: data.raw_user_metadata
+			username: attributes.username,
+			metadata: attributes.raw_user_metadata
 		};
 	}
 });
@@ -32,3 +32,10 @@ export const googleAuth = google(
 );
 
 export type Auth = typeof auth;
+
+// Need to generify it
+export const google = new Google(
+	GAUTH_CLIENT_ID,
+	GAUTH_SECRET,
+	'http://localhost:5173/login/google/callback'
+);
