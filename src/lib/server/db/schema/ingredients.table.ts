@@ -11,7 +11,7 @@ export const ingredients = pgTable(
 	},
 	({ name, url }) => ({
 		// Add an index on the name so that it is quickly searchable.
-		nameIdx: index('name_idx').on(name)
+		nameIdx: index('name_idx').on(name),
     // Gonna need the url
     urlIdx: index('url_idx').on(url),
 	})
