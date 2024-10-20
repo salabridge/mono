@@ -1,5 +1,5 @@
-import { SvelteNodeViewRenderer } from '$lib/tiptap/svelteNodeViewRenderer';
-import { Extension, Node } from '@tiptap/core';
+import SvelteNodeViewRenderer from '$lib/tiptap/svelteNodeViewRenderer';
+import { Extension, Node, mergeAttributes } from '@tiptap/core';
 import StepsComponent from '$lib/components/steps/steps.svelte';
 
 /**
@@ -8,7 +8,7 @@ import StepsComponent from '$lib/components/steps/steps.svelte';
 export const Steps = Extension.create({
   name: 'Steps',
   addExtensions() {
-      return [StepsNode]
+    return [StepsNode]
   },
 });
 
@@ -25,13 +25,13 @@ export const StepsNode = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    console.info('hi jim');
-    return ['steps-node-sv', HTMLAttributes, 0];
+    return ['steps-node-sv', mergeAttributes(HTMLAttributes)];
   },
 
   addNodeView() {
-    console.info('hi')
-    return SvelteNodeViewRenderer(StepsComponent, {});
+    return SvelteNodeViewRenderer(StepsComponent, {
+      as: 'section'
+    });
   },
 
   addCommands() {

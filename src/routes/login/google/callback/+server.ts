@@ -72,8 +72,3 @@ export async function GET(event: RequestEvent): Promise<Response> {
 		});
 	}
 }
-
-interface GitHubUser {
-	id: string;
-	login: string;
-}

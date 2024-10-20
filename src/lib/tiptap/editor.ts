@@ -1,6 +1,6 @@
 import type { SvelteComponent } from 'svelte';
 import { Editor as CoreEditor, type EditorOptions } from '@tiptap/core';
-import type { SvelteRenderer } from './svelteRenderer';
+import type { SvelteRenderer } from './svelteRenderer.svelte';
 
 export class Editor extends CoreEditor {
   constructor(options: Partial<EditorOptions>) {
