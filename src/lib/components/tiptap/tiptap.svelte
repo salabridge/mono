@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte'
+ = $state()  import  = $state(){ onMount, onDestroy } from 'svelte'
   import { Editor } from '@tiptap/core'
   import StarterKit from '@tiptap/starter-kit'
   import { StepsNode, Steps } from './extension'
@@ -8,27 +8,28 @@
   let editor: Editor;
   let html: string;
 
-  $: console.info(html);
+  interface Props { editable?: boolean }
+
+  let { editable = true }: Props = $props();
+
 
   // On mount, get everything setup
   onMount(() => {
     editor = new Editor({
       element: element,
+      editable,
       extensions: [
         StarterKit,
-        Steps,
+        StepsNode,
         // Fuc
       ],
-      content: `<h1>Boobs</h1>\n<p>Hello World! 🌍️ </p>
-                <steps>
-                  <steps-node-sv>Hi Jim</steps-node-sv>
-                  <steps-node-sv>Penis</steps-node-sv>
-                  <steps-node-sv>Boobies</steps-node-sv>
-                </steps>
+      content: `<p>Hello World! 🌍️ </p>
+                <steps-node-sv>Hi Jim</steps-node-sv>
                 `,
       onTransaction: () => {
         // force re-render so `editor.isActive` works as expected
         editor = editor
+        console.info(editor.getHTML());
         html = editor.getHTML();
       },
     })
@@ -43,26 +44,26 @@
 </script>
 
 {#if editor}
-  <button on:click={() => editor.chain().focus().toggleStepNode().run()}
+  <button onclick={() => editor.chain().focus().toggleStepNode().run()}
     class:active={editor.isActive('steps-node')}>
     Steps
   </button>
   <button
-    on:click={() => editor.chain().focus().toggleHeading({ level: 1}).run()}
+    onclick={() => editor.chain().focus().toggleHeading({ level: 1}).run()}
     class:active={editor.isActive('heading', { level: 1 })}
   >
     H1
   </button>
   <button
-    on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+    onclick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
     class:active={editor.isActive('heading', { level: 2 })}
   >
     H2
   </button>
-  <button on:click={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive('paragraph')}>
+  <button onclick={() => editor.chain().focus().setParagraph().run()} class:active={editor.isActive('paragraph')}>
     P
   </button>
-  <button on:click={() => {
+  <button onclick={() => {
     console.info(editor.getHTML(), editor.getText());
   }}>
     Save
@@ -70,11 +71,6 @@
 {/if}
 
 <div bind:this={element} />
-
-<div>
-  this is raw HTML
-  {@html html}
-</div>
 
 <style>
   button.active {
