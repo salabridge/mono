@@ -102,6 +102,10 @@ importers:
   packages/db: {}
 
   packages/ui:
+    dependencies:
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.1
     devDependencies:
       svelte:
         specifier: ^5.0.0-next.1

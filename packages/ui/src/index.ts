@@ -4,3 +4,4 @@ export { default as Input } from './components/input/input.svelte';
 export { default as Toggle } from './components/toggle/toggle.svelte';
 export { default as Header } from './components/header/header.svelte';
 export { default as Navbar } from './components/navbar.svelte';
+export type { HeaderProps, HeaderTags } from './components/header/types';
