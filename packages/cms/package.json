@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "payload": "^3.79.0",
-    "@payloadcms/db-postgres": "^3.79.0"
+    "@payloadcms/db-postgres": "^3.79.0",
+    "@payloadcms/richtext-lexical": "^3.79.0"
   },
   "devDependencies": {
     "typescript": "^5.0.0",
