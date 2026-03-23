@@ -1,6 +1,5 @@
 <script>
-	import Header from '$lib/components/header/header.svelte';
-	import Input from '$lib/components/input/input.svelte';
+	import { Header, Input } from '@salabridge/ui';
 </script>
 
 <div class="container mx-auto">

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Header from '$lib/components/header/header.svelte';
-	import Toggle from '$lib/components/toggle/toggle.svelte';
+	import { Header, Toggle } from '@salabridge/ui';
 	import { BookmarkIcon, CameraOffIcon, CameraIcon } from 'lucide-svelte';
 </script>
 

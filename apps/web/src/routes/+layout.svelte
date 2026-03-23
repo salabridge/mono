@@ -1,5 +1,5 @@
 <script>
-	import Navbar from '$lib/components/navbar.svelte';
+	import { Navbar } from '@salabridge/ui';
 	import '../app.css';
 	const { children } = $props();
 </script>
