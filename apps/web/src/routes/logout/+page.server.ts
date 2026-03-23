@@ -1,10 +1,10 @@
-import { auth } from '$lib/server/auth.js';
-import { fail, redirect } from '@sveltejs/kit';
+// apps/web/src/routes/logout/+page.server.ts
+import { redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
 
-export const load = async ({ locals }) => {
-	const session = await locals.auth.validate();
-	if (!session) return fail(401);
-	await auth.invalidateSession(session.sessionId);
-	locals.auth.setSession(null);
-	throw redirect(302, '/login');
+export const actions: Actions = {
+  default: async ({ cookies }) => {
+    cookies.delete('payload-token', { path: '/' });
+    redirect(302, '/login');
+  },
 };

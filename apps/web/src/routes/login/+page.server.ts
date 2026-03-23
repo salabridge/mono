@@ -1,40 +1,39 @@
-import { auth } from '$lib/server/auth.js';
-import { validateFormData } from '@jhecht/arktype-utils';
-import { error } from '@sveltejs/kit';
-import { type } from 'arktype';
+// apps/web/src/routes/login/+page.server.ts
+import { fail, redirect } from '@sveltejs/kit';
+import { getPayload } from '@salabridge/cms';
+import type { Actions } from './$types';
 
-// export const actions = {
-// 	login: async ({ request, locals }) => {
-// 		const formData = validateFormData(
-// 			await request.formData(),
-// 			type({
-// 				username: 'string>=2',
-// 				password: 'string>=2'
-// 			})
-// 		);
+export const actions: Actions = {
+  login: async ({ request, cookies }) => {
+    const formData = await request.formData();
+    const email = formData.get('email');
+    const password = formData.get('password');
 
-// 		try {
-// 			// Get the key
-// 			const key = await auth.useKey('username', formData.username.toLowerCase(), formData.password);
-// 			// Invalidate the other user sessions cause fuck-em
-// 			await auth.invalidateAllUserSessions(key.userId);
+    if (typeof email !== 'string' || typeof password !== 'string') {
+      return fail(400, { message: 'Email and password are required.' });
+    }
 
-// 			// Create new session
-// 			const session = await auth.createSession({
-// 				userId: key.userId,
-// 				attributes: {}
-// 			});
+    try {
+      const cms = await getPayload();
+      const result = await cms.login({
+        collection: 'users',
+        data: { email, password },
+      });
 
-// 			locals.auth.setSession(session);
+      const token = result.token;
+      if (!token) return fail(401, { message: 'Invalid credentials.' });
 
-// 			// Return the session to the user.
-// 			return {
-// 				session
-// 			};
-// 		} catch (e) {
-// 			console.error(e);
-// 			if (e instanceof LuciaError) error(400, e.message);
-// 			error(400);
-// 		}
-// 	}
-// };
+      cookies.set('payload-token', token, {
+        httpOnly: true,
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 60 * 60 * 24 * 7, // 7 days
+      });
+    } catch {
+      return fail(401, { message: 'Invalid email or password.' });
+    }
+
+    redirect(302, '/');
+  },
+};
