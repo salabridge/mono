@@ -14,7 +14,7 @@
 
 	type InputProps = VariantProps<typeof inputProps> & HTMLInputAttributes;
 
-	let { class: className, size, ...rest } = $props<InputProps>();
+	let { class: className, size, ...rest }: InputProps = $props();
 
 	let classes = $derived(inputProps({ size, class: className }));
 </script>

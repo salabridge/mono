@@ -26,7 +26,7 @@
 
 	type Bob = VariantProps<typeof classes>;
 
-	let { children, tag = 'h1', actions, class: className, color } = $props<HeaderProps & Bob>();
+	let { children, tag = 'h1', actions, class: className, color }: HeaderProps & Bob = $props();
 	const bob = classes({ tag: tag as HeaderTags, className, color });
 </script>
 

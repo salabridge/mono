@@ -7,7 +7,7 @@
 		off?: Snippet;
 		onchange?: (currentState: OnOrOff) => unknown;
 	};
-	const { selected: selectedProp = 'off', on, off, onchange } = $props<ToggleProps>();
+	const { selected: selectedProp = 'off', on, off, onchange }: ToggleProps = $props();
 	let selected = $state(selectedProp);
 
 	function change(v: OnOrOff) {

@@ -29,7 +29,7 @@
 	type ButtonVariantProps = VariantProps<typeof buttonClasses>;
 	type ButtonProps = ButtonVariantProps & HTMLButtonAttributes;
 
-	const { children, class: className, size, color, variety, ...rest } = $props<ButtonProps>();
+	const { children, class: className, size, color, variety, ...rest }: ButtonProps = $props();
 	let classes = $derived(buttonClasses({ size, color, variety, class: className }));
 </script>
 
