@@ -1,31 +1,36 @@
-import { auth } from '$lib/server/auth';
+// apps/web/src/hooks.server.ts
+import { jwtVerify } from 'jose';
+import { getPayload } from '@salabridge/cms';
 import type { Handle } from '@sveltejs/kit';
-import { Cookie } from 'lucia';
+import { PAYLOAD_SECRET } from '$env/static/private';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	const sessionId = event.cookies.get(auth.sessionCookieName);
-	if (!sessionId) {
-		event.locals.user = null;
-		event.locals.session = null;
-		return resolve(event);
-	}
+  const token = event.cookies.get('payload-token');
 
-	const { session, user } = await auth.validateSession(sessionId);
-	let sessionCookie: Cookie | null = null;
-	if (session && session.fresh) {
-		sessionCookie = auth.createSessionCookie(session.id);
-	}
-	if (!session) {
-		sessionCookie = auth.createBlankSessionCookie();
-	}
+  if (!token) {
+    event.locals.user = null;
+    return resolve(event);
+  }
 
-	if (sessionCookie)
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
+  try {
+    const secretKey = new TextEncoder().encode(PAYLOAD_SECRET);
+    const { payload: jwtPayload } = await jwtVerify(token, secretKey);
 
-	event.locals.user = user;
-	event.locals.session = session;
-	return resolve(event);
+    if (typeof jwtPayload['id'] !== 'string') {
+      event.locals.user = null;
+      return resolve(event);
+    }
+
+    const cms = await getPayload();
+    const user = await cms.findByID({
+      collection: 'users',
+      id: jwtPayload['id'],
+    });
+
+    event.locals.user = user;
+  } catch {
+    event.locals.user = null;
+  }
+
+  return resolve(event);
 };
