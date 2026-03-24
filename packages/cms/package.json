@@ -1,0 +1,37 @@
+{
+  "name": "@salabridge/cms",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./payload.config": {
+      "import": "./dist/payload.config.js",
+      "types": "./dist/payload.config.d.ts"
+    },
+    "./payload-types": {
+      "import": "./dist/payload-types.js",
+      "types": "./dist/payload-types.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "payload generate:types && tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "payload": "^3.80.0",
+    "@payloadcms/db-postgres": "^3.80.0",
+    "@payloadcms/richtext-lexical": "^3.80.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "vitest": "^1.0.0"
+  }
+}
