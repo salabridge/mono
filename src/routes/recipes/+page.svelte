@@ -4,12 +4,6 @@
 	import { BookmarkIcon, CameraOffIcon, CameraIcon } from 'lucide-svelte';
 </script>
 
-{#snippet actions()}
-	<button title="bookmark">
-		<BookmarkIcon size="1em" />
-	</button>
-{/snippet}
-
 <section class="min-h-56 bg-blue-500"></section>
 
 <div class="flex gap-2 justify-center flex-grow min-h-dvh bg-zinc-100 text-zinc-800">
